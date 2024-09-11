@@ -13,13 +13,20 @@
 
     <groupId>org.module</groupId>
     <artifactId>todo-persistence</artifactId>
-    <version>1.0-SNAPSHOT</version>
+<!--    <version>1.0-SNAPSHOT</version>-->
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/srikar-rao/todo-persistence</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -64,5 +71,24 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Maven Release Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <configuration>
+                    <!-- Disable remote pushes -->
+                    <pushChanges>false</pushChanges>
+                    <!-- Custom tag name -->
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+                    <!-- Update submodules if you have multi-module setup -->
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
