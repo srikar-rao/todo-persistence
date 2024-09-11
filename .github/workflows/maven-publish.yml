@@ -25,6 +25,8 @@ jobs:
       with:
         java-version: ${{ matrix.java-version }}
         distribution: temurin
+        server-id: github
+        settings-path: ${{ github.workspace }}
 
     - name: Cache Maven packages
       uses: actions/cache@v3
