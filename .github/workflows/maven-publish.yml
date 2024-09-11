@@ -3,12 +3,12 @@ name: Maven Build and Versioning
 on:
   push:
     branches:
-      - main
+      - master
     tags:
       - 'v*'   # Detect version tags like v1.0.0
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
