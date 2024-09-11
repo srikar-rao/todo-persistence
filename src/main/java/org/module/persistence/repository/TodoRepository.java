@@ -1,7 +1,8 @@
-package org.module.repostiory;
+package org.module.persistence.repository;
 
-import org.module.entity.TodoEntity;
+import org.module.persistence.entity.TodoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 @Repository
