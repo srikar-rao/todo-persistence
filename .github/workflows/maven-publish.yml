@@ -43,16 +43,13 @@ jobs:
           CURRENT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo "Current Version: $CURRENT_VERSION"
 
-          # Strip the `-SNAPSHOT` suffix and increment the patch version
+          # Strip any `-SNAPSHOT` suffix and increment the patch version
           BASE_VERSION=$(echo $CURRENT_VERSION | sed 's/-SNAPSHOT//')
           NEW_VERSION=$(echo $BASE_VERSION | awk -F. -v OFS=. '{$NF = $NF + 1; print}')
-          
-          # Append `-SNAPSHOT` to the new version
-          FINAL_VERSION="$NEW_VERSION-SNAPSHOT"
-          echo "New Version: $FINAL_VERSION"
+          echo "New Version: $NEW_VERSION"
 
           # Update the version in pom.xml
-          mvn versions:set -DnewVersion=$FINAL_VERSION
+          mvn versions:set -DnewVersion=$NEW_VERSION
           mvn versions:commit   
 
 
